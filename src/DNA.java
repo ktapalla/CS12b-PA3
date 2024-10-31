@@ -240,9 +240,9 @@ public class DNA {
 	/**
 	 * prints the output file under the name provided by the user
 	 */
-	public static void print(PrintStream printFile, String regName, String altSeq, int[] nucCountArr, double[] massCalc, double totalMass, String[] codons, String pTString) {
+	public static void print(PrintStream printFile, String regName, String origSeq, int[] nucCountArr, double[] massCalc, double totalMass, String[] codons, String pTString) {
 		printFile.format("%-13s%s\n", "Region Name: ", regName);
-		printFile.printf("%-13s%s\n", "Nucleotides: ", altSeq);
+		printFile.printf("%-13s%s\n", "Nucleotides: ", origSeq);
 		printFile.printf("%-13s%s\n", "Nuc. Counts: ", Arrays.toString(nucCountArr));
 		printFile.printf("%-13s%s%4s%.1f\n", "Total Mass%: ", Arrays.toString(massCalc), " of ", totalMass);
 		printFile.printf("%-13s%s\n", "Codons List: ", Arrays.toString(codons));
@@ -288,9 +288,10 @@ public class DNA {
 			boolean proteinTest = proteinTest(codons, massCalc);
 			String pTString = pTString(proteinTest);
 			//Prints the results/output in the new file named by user
-			print(printFile, regName, altSeq, nucCountArr, massCalc, totalMass, codons, pTString);
+			print(printFile, regName, seq, nucCountArr, massCalc, totalMass, codons, pTString);
 			ind++;
 		}
+		printFile.close();
 
 	}
 
